@@ -2,6 +2,9 @@ import React,{Component} from 'react';
 import Navbar from '../components/Navbar';
 import BookList from '../components/BookList';
 import UserCreate from '../components/UserCreate';
+import LanguageContext from '../contexts/LanguageContext';
+import LanguageSelector from '../components/LanguageSelector'
+import {LanguageStore} from '../contexts/LanguageContext';
 
 /*function App() {
   return (
@@ -13,24 +16,27 @@ import UserCreate from '../components/UserCreate';
 }*/
 
 class App extends Component {
-  state = {language:'English'};
+  state = {language:'english'};
 
 
-onLanguageChange=language=>{
-  this.setState({language:language});
-}
+//onLanguageChange=language=>{
+ // this.setState({language:language});
+//}
 
   render() { 
     return (
        <div className='ui container'>
        
-       <div>
-         Select A language
-         <i className='flag us' onClick={()=>this.onLanguageChange('English')}/>
-         <i className='flag nl' onClick={()=>this.onLanguageChange('Hindi')}/>
-       </div>
+     
+         <LanguageStore>
+       <LanguageSelector ></LanguageSelector>
+       
+       
       <UserCreate/>
-      </div> );
+  
+      </LanguageStore>
+      </div> 
+      );
   }
 }
  
